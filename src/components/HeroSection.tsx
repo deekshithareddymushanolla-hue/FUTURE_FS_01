@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Github, Linkedin, Instagram, Mail, ArrowDown } from "lucide-react";
+import { Github, Linkedin, Mail, ArrowDown, Code } from "lucide-react";
 import profilePhoto from "@/assets/profile-photo.jpg";
 
 const roles = [
@@ -38,10 +38,10 @@ const HeroSection = () => {
   }, [text, isDeleting, roleIndex]);
 
   const socials = [
-    { icon: Github, href: "https://github.com", label: "GitHub" },
-    { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-    { icon: Instagram, href: "https://instagram.com", label: "Instagram" },
-    { icon: Mail, href: "mailto:deekshitha@example.com", label: "Email" },
+    { icon: Github, href: "https://github.com/deekshithareddymushanolla-hue", label: "GitHub" },
+    { icon: Linkedin, href: "https://www.linkedin.com/in/deekshitha-reddy-mushanolla-b5b0063a5/", label: "LinkedIn" },
+    { icon: Code, href: "https://leetcode.com/u/Deekshitha_21062021/", label: "LeetCode" },
+    { icon: Mail, href: "mailto:deekshithareddymushanolla@gmail.com", label: "Email" },
   ];
 
   return (
@@ -49,12 +49,10 @@ const HeroSection = () => {
       id="home"
       className="relative min-h-screen flex items-center justify-center particle-bg overflow-hidden"
     >
-      {/* Grid overlay */}
       <div className="absolute inset-0 grid-bg opacity-30" />
 
       <div className="container mx-auto px-6 pt-20 relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
-          {/* Text */}
           <motion.div
             initial={{ opacity: 0, x: -60 }}
             animate={{ opacity: 1, x: 0 }}
@@ -83,6 +81,12 @@ const HeroSection = () => {
                 View Projects
               </a>
               <a
+                href="#resume"
+                className="glass-card px-6 py-3 text-sm font-medium text-primary border-primary/30 hover:glow-purple transition-all duration-300"
+              >
+                Download Resume
+              </a>
+              <a
                 href="#contact"
                 className="glass-card px-6 py-3 text-sm font-medium text-primary border-primary/30 hover:glow-purple transition-all duration-300"
               >
@@ -106,7 +110,6 @@ const HeroSection = () => {
             </div>
           </motion.div>
 
-          {/* Photo */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -121,13 +124,11 @@ const HeroSection = () => {
                   className="w-full h-full object-cover"
                 />
               </div>
-              {/* Glow ring */}
               <div className="absolute inset-0 rounded-full border border-neon-purple/20 animate-glow-pulse scale-110" />
             </div>
           </motion.div>
         </div>
 
-        {/* Scroll indicator */}
         <motion.div
           animate={{ y: [0, 12, 0] }}
           transition={{ repeat: Infinity, duration: 2 }}

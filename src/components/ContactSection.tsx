@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Send, Github, Linkedin, Instagram, Mail, CheckCircle } from "lucide-react";
+import { Send, Github, Linkedin, Mail, CheckCircle, Code } from "lucide-react";
 
 const ContactSection = () => {
   const [submitted, setSubmitted] = useState(false);
@@ -14,10 +14,10 @@ const ContactSection = () => {
   };
 
   const socials = [
-    { icon: Github, href: "https://github.com", label: "GitHub" },
-    { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-    { icon: Instagram, href: "https://instagram.com", label: "Instagram" },
-    { icon: Mail, href: "mailto:deekshitha@example.com", label: "Email" },
+    { icon: Github, href: "https://github.com/deekshithareddymushanolla-hue", label: "GitHub" },
+    { icon: Linkedin, href: "https://www.linkedin.com/in/deekshitha-reddy-mushanolla-b5b0063a5/", label: "LinkedIn" },
+    { icon: Code, href: "https://leetcode.com/u/Deekshitha_21062021/", label: "LeetCode" },
+    { icon: Mail, href: "mailto:deekshithareddymushanolla@gmail.com", label: "Email" },
   ];
 
   return (
@@ -37,7 +37,6 @@ const ContactSection = () => {
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
-          {/* Form */}
           <motion.form
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -98,7 +97,6 @@ const ContactSection = () => {
             </button>
           </motion.form>
 
-          {/* Info */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -108,12 +106,17 @@ const ContactSection = () => {
           >
             <div>
               <h3 className="text-xl font-semibold text-foreground mb-3">
-                Let's build something amazing together
+                M. Deekshitha Reddy
               </h3>
+              <p className="text-muted-foreground leading-relaxed mb-2">
+                <Mail className="inline mr-2 text-primary" size={16} />
+                <a href="mailto:deekshithareddymushanolla@gmail.com" className="hover:text-primary transition-colors">
+                  deekshithareddymushanolla@gmail.com
+                </a>
+              </p>
               <p className="text-muted-foreground leading-relaxed">
                 Whether you have a project in mind, want to collaborate, or just want to
-                say hello — I'd love to hear from you. Feel free to reach out through the
-                form or any of my social channels.
+                say hello — I'd love to hear from you.
               </p>
             </div>
 
