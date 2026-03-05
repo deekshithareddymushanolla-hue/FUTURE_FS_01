@@ -1,34 +1,36 @@
 import { motion } from "framer-motion";
-import { Award, GraduationCap, Trophy, Wrench } from "lucide-react";
+import { Trophy, Award, Code2, Rocket } from "lucide-react";
 
-const achievements = [
+const certificates = [
   {
-    icon: Award,
-    title: "Java Programming Certification",
-    description: "Completed advanced Java certification covering OOP, data structures, and design patterns.",
-    date: "2025",
-    color: "neon-blue",
-  },
-  {
+    category: "Sports",
     icon: Trophy,
-    title: "Hackathon Finalist",
-    description: "Top 10 finish in college-level hackathon, building an innovative student management solution.",
-    date: "2024",
-    color: "neon-purple",
+    items: [
+      { title: "Throw Ball Certificate", description: "Recognized for outstanding performance in Throw Ball competitions." },
+      { title: "Kho-Kho Certificate", description: "Certified achievement in Kho-Kho sports events and tournaments." },
+    ],
   },
   {
-    icon: GraduationCap,
-    title: "Academic Excellence",
-    description: "Consistently maintained top academic performance in Computer Science coursework.",
-    date: "2023 - Present",
-    color: "neon-cyan",
+    category: "Technical",
+    icon: Code2,
+    items: [
+      { title: "Java Programming Certification", description: "Advanced certification covering OOP, data structures, and design patterns." },
+      { title: "Web Development Certificate", description: "Completed certification in modern web development technologies." },
+    ],
   },
   {
-    icon: Wrench,
-    title: "Web Development Workshop",
-    description: "Led and participated in workshops on modern web development practices and tools.",
-    date: "2024",
-    color: "neon-blue",
+    category: "Projects",
+    icon: Rocket,
+    items: [
+      { title: "Project Excellence Award", description: "Recognized for delivering high-quality full-stack project implementations." },
+    ],
+  },
+  {
+    category: "Hackathons",
+    icon: Award,
+    items: [
+      { title: "Hackathon Participation Certificate", description: "Top finish in college-level hackathon, building innovative solutions." },
+    ],
   },
 ];
 
@@ -46,39 +48,33 @@ const AchievementsSection = () => (
           Milestones
         </p>
         <h2 className="text-3xl md:text-5xl font-bold text-gradient">
-          Achievements
+          Certificates
         </h2>
       </motion.div>
 
-      <div className="max-w-3xl mx-auto relative">
-        {/* Timeline line */}
-        <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-neon-blue via-neon-purple to-neon-cyan opacity-30" />
-
-        {achievements.map((item, i) => (
+      <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        {certificates.map((cat, ci) => (
           <motion.div
-            key={item.title}
+            key={cat.category}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: i * 0.1 }}
-            className={`relative flex items-start gap-6 mb-12 ${
-              i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-            }`}
+            transition={{ duration: 0.5, delay: ci * 0.1 }}
+            className="glass-card p-6 hover:glow-purple transition-all duration-300"
           >
-            {/* Dot */}
-            <div className="absolute left-6 md:left-1/2 w-3 h-3 rounded-full bg-primary -translate-x-1.5 mt-6 glow-blue z-10" />
-
-            <div className={`ml-14 md:ml-0 md:w-1/2 ${i % 2 === 0 ? "md:pr-12" : "md:pl-12"}`}>
-              <div className="glass-card p-6 hover:glow-purple transition-all duration-300">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                    <item.icon className="text-primary" size={20} />
-                  </div>
-                  <span className="text-xs font-mono text-muted-foreground">{item.date}</span>
-                </div>
-                <h3 className="text-base font-semibold text-foreground mb-2">{item.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+            <div className="flex items-center gap-3 mb-5">
+              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                <cat.icon className="text-primary" size={20} />
               </div>
+              <h3 className="text-lg font-semibold text-foreground">{cat.category} Certificates</h3>
+            </div>
+            <div className="space-y-4">
+              {cat.items.map((item) => (
+                <div key={item.title} className="border-l-2 border-primary/30 pl-4">
+                  <h4 className="text-sm font-medium text-foreground mb-1">{item.title}</h4>
+                  <p className="text-xs text-muted-foreground leading-relaxed">{item.description}</p>
+                </div>
+              ))}
             </div>
           </motion.div>
         ))}
