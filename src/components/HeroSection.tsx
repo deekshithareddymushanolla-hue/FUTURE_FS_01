@@ -15,6 +15,35 @@ const HeroSection = () => {
   const [text, setText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
 
+  // Welcome voice greeting on first visit
+  useEffect(() => {
+    const hasGreeted = sessionStorage.getItem("voice-greeted");
+    if (!hasGreeted) {
+      const timer = setTimeout(() => {
+        const utterance = new SpeechSynthesisUtterance(
+          "Welcome to my world. Hi, I'm Deekshitha Reddy."
+        );
+        utterance.rate = 0.9;
+        utterance.pitch = 1.2;
+        utterance.volume = 1;
+        // Try to pick a female English voice
+        const voices = window.speechSynthesis.getVoices();
+        const femaleVoice = voices.find(
+          (v) =>
+            v.lang.startsWith("en") &&
+            (v.name.toLowerCase().includes("female") ||
+              v.name.toLowerCase().includes("samantha") ||
+              v.name.toLowerCase().includes("zira") ||
+              v.name.toLowerCase().includes("google uk english female"))
+        );
+        if (femaleVoice) utterance.voice = femaleVoice;
+        window.speechSynthesis.speak(utterance);
+        sessionStorage.setItem("voice-greeted", "true");
+      }, 1500);
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
   useEffect(() => {
     const current = roles[roleIndex];
     const timeout = setTimeout(
