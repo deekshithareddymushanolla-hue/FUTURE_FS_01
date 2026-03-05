@@ -118,6 +118,15 @@
       radial-gradient(circle at 50% 80%, hsla(var(--neon-cyan) / 0.06) 0%, transparent 50%);
   }
 
+  .hero-colorful-bg {
+    background: 
+      radial-gradient(ellipse at 10% 40%, hsla(330, 80%, 60%, 0.12) 0%, transparent 50%),
+      radial-gradient(ellipse at 90% 20%, hsla(270, 70%, 55%, 0.10) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 90%, hsla(185, 80%, 50%, 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 70% 60%, hsla(40, 90%, 60%, 0.06) 0%, transparent 40%),
+      hsl(var(--background));
+  }
+
   .grid-bg {
     background-image: 
       linear-gradient(hsla(var(--glass-border) / 0.3) 1px, transparent 1px),
