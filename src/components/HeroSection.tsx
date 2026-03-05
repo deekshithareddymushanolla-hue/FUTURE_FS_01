@@ -47,12 +47,19 @@ const HeroSection = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center particle-bg overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden hero-colorful-bg"
     >
-      <div className="absolute inset-0 grid-bg opacity-30" />
+      {/* Colorful animated background blobs */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] rounded-full bg-gradient-to-br from-pink-400/30 via-purple-400/20 to-transparent blur-3xl animate-float" />
+        <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] rounded-full bg-gradient-to-tl from-cyan-400/25 via-blue-400/20 to-transparent blur-3xl animate-float" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-[30%] right-[20%] w-[40%] h-[40%] rounded-full bg-gradient-to-bl from-amber-300/20 via-rose-400/15 to-transparent blur-3xl animate-float" style={{ animationDelay: '4s' }} />
+        <div className="absolute bottom-[10%] left-[15%] w-[35%] h-[35%] rounded-full bg-gradient-to-tr from-emerald-400/20 via-teal-300/15 to-transparent blur-3xl animate-float" style={{ animationDelay: '3s' }} />
+      </div>
 
       <div className="container mx-auto px-6 pt-20 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+        <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+          {/* Text side */}
           <motion.div
             initial={{ opacity: 0, x: -60 }}
             animate={{ opacity: 1, x: 0 }}
@@ -73,27 +80,6 @@ const HeroSection = () => {
               </span>
             </div>
 
-            <div className="flex flex-wrap gap-4 justify-center lg:justify-start mb-10">
-              <a
-                href="#projects"
-                className="glass-card gradient-border px-6 py-3 text-sm font-medium text-foreground hover:glow-blue transition-all duration-300"
-              >
-                View Projects
-              </a>
-              <a
-                href="#resume"
-                className="glass-card px-6 py-3 text-sm font-medium text-primary border-primary/30 hover:glow-purple transition-all duration-300"
-              >
-                Download Resume
-              </a>
-              <a
-                href="#contact"
-                className="glass-card px-6 py-3 text-sm font-medium text-primary border-primary/30 hover:glow-purple transition-all duration-300"
-              >
-                Contact Me
-              </a>
-            </div>
-
             <div className="flex gap-4 justify-center lg:justify-start">
               {socials.map((s) => (
                 <a
@@ -110,21 +96,22 @@ const HeroSection = () => {
             </div>
           </motion.div>
 
+          {/* Photo side - large, half the page */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="flex-shrink-0"
+            className="flex-1 flex justify-center lg:justify-end"
           >
-            <div className="relative animate-float">
-              <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden gradient-border glow-purple">
+            <div className="relative">
+              <div className="w-72 h-72 md:w-[400px] md:h-[400px] lg:w-[480px] lg:h-[480px] rounded-3xl overflow-hidden gradient-border glow-purple shadow-2xl">
                 <img
                   src={profilePhoto}
                   alt="M. Deekshitha Reddy - Full Stack Developer"
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="absolute inset-0 rounded-full border border-neon-purple/20 animate-glow-pulse scale-110" />
+              <div className="absolute -inset-3 rounded-3xl bg-gradient-to-br from-pink-500/10 via-purple-500/10 to-cyan-500/10 blur-xl -z-10" />
             </div>
           </motion.div>
         </div>
