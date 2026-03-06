@@ -1,26 +1,34 @@
 import { motion } from "framer-motion";
 import { Download, GraduationCap, Code2, Rocket, Award } from "lucide-react";
+import resumeEducation from "@/assets/resume-education.jpeg";
+import resumeSkills from "@/assets/resume-skills.jpeg";
+import resumeProjects from "@/assets/resume-projects.jpeg";
+import resumeCertifications from "@/assets/resume-certifications.jpeg";
 
 const resumeData = [
   {
     icon: GraduationCap,
     title: "Education",
     items: ["B.Tech in Computer Science", "Consistent academic excellence"],
+    image: resumeEducation,
   },
   {
     icon: Code2,
     title: "Skills",
     items: ["Java (Primary)", "HTML, CSS, JavaScript", "MySQL, Git, GitHub"],
+    image: resumeSkills,
   },
   {
     icon: Rocket,
     title: "Projects",
     items: ["Full-Stack Web Applications", "Java-based Solutions", "Student Management Systems"],
+    image: resumeProjects,
   },
   {
     icon: Award,
     title: "Certifications",
     items: ["Java Programming", "Web Development", "Hackathon Achievements"],
+    image: resumeCertifications,
   },
 ];
 
@@ -48,22 +56,31 @@ const ResumeSection = () => (
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: i * 0.1 }}
-            className="glass-card p-6 hover:glow-blue transition-all duration-300"
+            className="glass-card overflow-hidden group hover:glow-blue transition-all duration-300"
           >
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                <section.icon className="text-primary" size={20} />
-              </div>
-              <h3 className="text-base font-semibold text-foreground">{section.title}</h3>
+            <div className="h-40 overflow-hidden">
+              <img
+                src={section.image}
+                alt={section.title}
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
             </div>
-            <ul className="space-y-2">
-              {section.items.map((item) => (
-                <li key={item} className="text-sm text-muted-foreground flex items-start gap-2">
-                  <span className="text-primary mt-1">•</span>
-                  {item}
-                </li>
-              ))}
-            </ul>
+            <div className="p-6">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                  <section.icon className="text-primary" size={20} />
+                </div>
+                <h3 className="text-base font-semibold text-foreground">{section.title}</h3>
+              </div>
+              <ul className="space-y-2">
+                {section.items.map((item) => (
+                  <li key={item} className="text-sm text-muted-foreground flex items-start gap-2">
+                    <span className="text-primary mt-1">•</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </motion.div>
         ))}
       </div>
