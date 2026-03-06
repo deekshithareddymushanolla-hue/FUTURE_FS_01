@@ -1,13 +1,19 @@
 import { motion } from "framer-motion";
 import { Dumbbell, BookOpen, Moon, Users, Sparkles, Trophy } from "lucide-react";
+import habitSports from "@/assets/habit-sports.jpeg";
+import habitWorkout from "@/assets/habit-workout.jpeg";
+import habitBooks from "@/assets/habit-books.jpeg";
+import habitSleeping from "@/assets/habit-sleeping.jpeg";
+import habitCommunicating from "@/assets/habit-communicating.jpeg";
+import habitAnimations from "@/assets/habit-animations.gif";
 
 const habits = [
-  { icon: Trophy, label: "Sports", desc: "Staying active through competitive sports" },
-  { icon: Dumbbell, label: "Working Out", desc: "Building strength and discipline" },
-  { icon: BookOpen, label: "Story Books", desc: "Exploring worlds through reading" },
-  { icon: Moon, label: "Sleeping", desc: "Recharging for peak productivity" },
-  { icon: Users, label: "Communicating", desc: "Connecting and learning from people" },
-  { icon: Sparkles, label: "Creating Animations", desc: "Bringing ideas to life with motion" },
+  { icon: Trophy, label: "Sports", desc: "Staying active through competitive sports", image: habitSports },
+  { icon: Dumbbell, label: "Working Out", desc: "Building strength and discipline", image: habitWorkout },
+  { icon: BookOpen, label: "Story Books", desc: "Exploring worlds through reading", image: habitBooks },
+  { icon: Moon, label: "Sleeping", desc: "Recharging for peak productivity", image: habitSleeping },
+  { icon: Users, label: "Communicating", desc: "Connecting and learning from people", image: habitCommunicating },
+  { icon: Sparkles, label: "Creating Animations", desc: "Bringing ideas to life with motion", image: habitAnimations },
 ];
 
 const HabitsSection = () => (
@@ -36,13 +42,22 @@ const HabitsSection = () => (
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: i * 0.08 }}
-            className="glass-card p-6 text-center hover:glow-blue transition-all duration-300 group"
+            className="glass-card overflow-hidden hover:glow-blue transition-all duration-300 group"
           >
-            <div className="w-12 h-12 mx-auto mb-4 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-              <h.icon className="text-primary" size={24} />
+            <div className="h-28 overflow-hidden">
+              <img
+                src={h.image}
+                alt={h.label}
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
             </div>
-            <h3 className="text-sm font-semibold text-foreground mb-1">{h.label}</h3>
-            <p className="text-xs text-muted-foreground">{h.desc}</p>
+            <div className="p-4 text-center">
+              <div className="w-10 h-10 mx-auto mb-3 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                <h.icon className="text-primary" size={20} />
+              </div>
+              <h3 className="text-sm font-semibold text-foreground mb-1">{h.label}</h3>
+              <p className="text-xs text-muted-foreground">{h.desc}</p>
+            </div>
           </motion.div>
         ))}
       </div>
